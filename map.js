@@ -3,7 +3,7 @@ var map = L.map('map').setView([0, 0], 0);
 L.tileLayer(`maps/images/{z}/{x}/{y}.jpg`, {
     continuousWorld: false,
     noWrap: true,
-    maxZoom: 3,
+    maxZoom: 5,
     minZoom: 2,
     id: 'secretgarden.V1',
     bounds,
@@ -28,7 +28,7 @@ map.fitBounds(bounds);
 
 // marker.bindPopup("Kiwi tunnel").openPopup();
 
-var circle_kiwi_tunnel = L.circle([-49.100, -39.518], {
+var circle_kiwi_tunnel = L.circle([-47.100, -39.518], {
     color: 'gray',
     fillColor: '#fff',
     fillOpacity: 0.5,
