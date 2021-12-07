@@ -28,11 +28,19 @@ map.fitBounds(bounds);
 
 // marker.bindPopup("Kiwi tunnel").openPopup();
 
-var circle = L.circle([-49.100, -39.518], {
+var circle_kiwi_tunnel = L.circle([-49.100, -39.518], {
     color: 'gray',
     fillColor: '#fff',
     fillOpacity: 0.5,
     radius: 220000
 }).addTo(map);
 
-circle.bindPopup("Kiwi tunnel");
+var circle_poort = L.circle([-39.775, -9.50], {
+    color: 'gray',
+    fillColor: '#fff',
+    fillOpacity: 0.5,
+    radius: 275000,
+}).addTo(map);
+
+circle_kiwi_tunnel.bindPopup("Kiwi tunnel");
+circle_poort.bindPopup("Poort");
