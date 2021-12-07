@@ -1,5 +1,7 @@
+// The map
 var map = L.map('map').setView([0, 0], 0);
 
+// Tilelayer for the map
 L.tileLayer(`maps/images/{z}/{x}/{y}.jpg`, {
     continuousWorld: false,
     noWrap: true,
@@ -17,6 +19,8 @@ northEast = L.latLng(65.99346179538875, 170);
 var bounds = L.latLngBounds(southWest, northEast);
 
 map.setMaxBounds(bounds);
+
+// Drag map only when inside bounds
 map.on('drag', function() {
     map.panInsideBounds(bounds, { animate: false });
 });
@@ -24,10 +28,7 @@ map.on('drag', function() {
 // Show the whole map:
 map.fitBounds(bounds);
 
-// var marker = L.marker([-49.521, -39.518]).addTo(map);
-
-// marker.bindPopup("Kiwi tunnel").openPopup();
-
+//Markers
 var circle_kiwi_tunnel = L.circle([-47.100, -39.518], {
     color: 'gray',
     fillColor: '#fff',
@@ -42,5 +43,6 @@ var circle_poort = L.circle([-39.775, -9.50], {
     radius: 275000,
 }).addTo(map);
 
+// Binding text to markers
 circle_kiwi_tunnel.bindPopup("Kiwi tunnel");
 circle_poort.bindPopup("Poort");
