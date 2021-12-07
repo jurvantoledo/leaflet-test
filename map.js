@@ -1,29 +1,38 @@
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map').setView([0, 0], 0);
 
-L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoianVydmFudG9sZWRvIiwiYSI6ImNrd2x5Y21icTBoNmIyb2xuYjk0OXV2MDQifQ.lnGPhFJ6sFIL8UzF1HksqA'
+L.tileLayer(`maps/images/{z}/{x}/{y}.jpg`, {
+    continuousWorld: false,
+    noWrap: true,
+    maxZoom: 3,
+    minZoom: 2,
+    id: 'secretgarden.V1',
+    bounds,
+    crs: L.CRS.Simple,
+    zoomSnap: 0.15,
 }).addTo(map);
 
-var marker = L.marker([51.513, -0.09]).addTo(map);
-var circle = L.circle([51.508, -0.11], {
-    color: 'red',
-    fillColor: '#f03',
+// Set the bounds
+var southWest = L.latLng(-65.98155760646617, -170),
+northEast = L.latLng(65.99346179538875, 170);
+var bounds = L.latLngBounds(southWest, northEast);
+
+map.setMaxBounds(bounds);
+map.on('drag', function() {
+    map.panInsideBounds(bounds, { animate: false });
+});
+
+// Show the whole map:
+map.fitBounds(bounds);
+
+// var marker = L.marker([-49.521, -39.518]).addTo(map);
+
+// marker.bindPopup("Kiwi tunnel").openPopup();
+
+var circle = L.circle([-49.100, -39.518], {
+    color: 'gray',
+    fillColor: '#fff',
     fillOpacity: 0.5,
-    radius: 500
+    radius: 220000
 }).addTo(map);
 
-var polygon = L.polygon([
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
-]).addTo(map);
-
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
+circle.bindPopup("Kiwi tunnel");
