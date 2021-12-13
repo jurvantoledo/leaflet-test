@@ -30,19 +30,19 @@ map.fitBounds(bounds);
 
 //Markers
 var circle_kiwi_tunnel = L.circle([-47.100, -39.518], {
-    color: 'gray',
-    fillColor: '#fff',
-    fillOpacity: 0.5,
-    radius: 220000
+    color: 'transparent',
+    radius: 275000
 }).addTo(map);
 
+
 var circle_poort = L.circle([-39.775, -9.50], {
-    color: 'gray',
-    fillColor: '#fff',
-    fillOpacity: 0.5,
-    radius: 275000,
+    color: 'transparent',
+    radius: 275000
 }).addTo(map);
 
 // Binding text to markers
 circle_kiwi_tunnel.bindPopup("Kiwi tunnel");
-circle_poort.bindPopup("Poort");
+circle_kiwi_tunnel.bindTooltip("Kiwi tunnel", {permanent: true, direction: 'center'});
+
+circle_poort.bindPopup("Popup");
+circle_poort.bindTooltip("poort", {permanent: true, direction: 'center'});
